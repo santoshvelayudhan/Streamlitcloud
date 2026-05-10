@@ -1,0 +1,370 @@
+# AI Weekend Tour Planner – MVP Use Case
+
+# Role
+
+You are an AI Travel Planner Agent responsible for helping families plan intelligent weekend trips based on:
+- Source location
+- Number of travel days
+- Family size
+- Budget
+- Interests/preferences
+
+The AI should recommend the best travel destinations using live web/API data and generate an optimized travel itinerary with approximate cost estimation.
+
+---
+
+# Objective
+
+Build a simple AI-powered Weekend Tour Planner application using:
+- Python
+- Streamlit
+- Single AI Agent Architecture
+- External APIs
+- No database (Phase 1)
+
+The application should:
+1. Accept user travel inputs
+2. Search popular nearby destinations
+3. Rank destinations intelligently
+4. Estimate travel costs
+5. Generate a day-wise itinerary
+6. Display weather, distance, and travel information
+7. Show source references and external links for transparency
+
+---
+
+# User Inputs
+
+The application should collect:
+
+| Input | Example |
+|---|---|
+| Source Location | Pune |
+| Number of Days | 2 |
+| Family Size | 4 |
+| Budget | 15000 |
+| Interests | Nature, Kids Friendly |
+| Travel Mode | Car |
+
+---
+
+# Expected Output
+
+The application should generate:
+
+- Recommended destinations
+- Popular attractions
+- Distance from source
+- Approximate travel time
+- Estimated total trip cost
+- Weather conditions
+- Suggested itinerary
+- Family-friendly recommendations
+- Source references and links
+
+---
+
+# Example Output
+
+## Recommended Destination
+Mahabaleshwar
+
+## Distance
+120 KM from Pune
+
+## Approximate Cost
+₹13,500
+
+## Weather
+Pleasant, 22°C
+
+## Suggested Attractions
+- Venna Lake
+- Mapro Garden
+- Elephant Point
+
+## Itinerary
+
+### Day 1
+- Start from Pune at 6 AM
+- Breakfast stop
+- Reach Mahabaleshwar
+- Visit Venna Lake
+- Hotel check-in
+
+### Day 2
+- Visit Mapro Garden
+- Shopping
+- Lunch
+- Return to Pune
+
+## Sources
+- Google Places
+- Google Maps
+- OpenWeather
+- TripAdvisor
+
+## External Links
+- Google Maps Location Link
+- TripAdvisor Destination Link
+- Tourism Website Link
+
+---
+
+# Technical Architecture
+
+## Frontend
+Use Streamlit for the UI.
+
+## Backend
+Use Python for orchestration and API integration.
+
+## AI Model
+Use Groq Llama or OpenAI for itinerary generation and reasoning.
+
+## State Management
+Use Streamlit session state only.
+No database required in Phase 1.
+
+---
+
+# APIs To Use
+
+## 1. Google Places API
+Purpose:
+- Tourist attractions
+- Ratings
+- Reviews
+- Popular places
+
+## 2. Google Distance Matrix API
+Purpose:
+- Distance calculation
+- Travel duration
+- Route estimation
+
+## 3. Weather API
+Purpose:
+- Current weather
+- Travel suitability
+
+Recommended:
+- OpenWeatherMap API
+
+## 4. Google Maps API
+Purpose:
+- Route references
+- Map integration
+
+## 5. Optional APIs (Future)
+- TripAdvisor API
+- Booking APIs
+- Restaurant APIs
+
+---
+
+# AI Responsibilities
+
+The AI Agent should:
+
+1. Understand user requirements
+2. Analyze budget feasibility
+3. Identify nearby destinations
+4. Rank destinations using:
+   - Ratings
+   - Popularity
+   - Distance
+   - Weather
+   - Family friendliness
+5. Generate a personalized itinerary
+6. Estimate trip cost
+7. Explain why the destination was selected
+8. Provide source transparency
+
+---
+
+# Cost Estimation Logic
+
+Estimate:
+- Fuel/travel cost
+- Hotel cost
+- Food expenses
+- Attraction entry fees
+
+Example Formula:
+
+Total Cost =
+Fuel +
+Hotel +
+Food +
+Tickets
+
+---
+
+# Ranking Logic
+
+Destination Score =
+Popularity +
+User Rating +
+Budget Fit +
+Travel Convenience +
+Weather Suitability +
+Family Friendly Score
+
+---
+
+# Source Transparency Requirement
+
+The application must display the sources from which travel information was collected.
+
+For every recommendation, include:
+- Source platform name
+- Rating source
+- Weather source
+- Distance source
+- External links for deeper exploration
+
+Example:
+
+Sources:
+- Google Places
+- Google Maps
+- OpenWeather
+- TripAdvisor
+
+The user should be able to click external links and validate the information independently.
+
+---
+
+# Suggested Folder Structure
+
+```text
+trip_planner_ai/
+│
+├── app.py
+├── planner.py
+├── api_services.py
+├── prompts.py
+├── utils.py
+├── requirements.txt
+```
+
+---
+
+# app.py Responsibilities
+
+- Build Streamlit UI
+- Collect user inputs
+- Trigger planner agent
+- Display trip recommendations
+
+---
+
+# planner.py Responsibilities
+
+Main orchestration layer:
+- Calls APIs
+- Sends data to AI model
+- Generates itinerary
+- Calculates ranking
+
+---
+
+# api_services.py Responsibilities
+
+Handle:
+- Google Places API
+- Distance Matrix API
+- Weather API
+- Maps API
+
+---
+
+# prompts.py Responsibilities
+
+Store reusable AI prompts.
+
+Example:
+- Trip planning prompt
+- Cost estimation prompt
+- Itinerary generation prompt
+
+---
+
+# utils.py Responsibilities
+
+Helper functions:
+- Cost calculation
+- Ranking algorithm
+- Distance formatting
+
+---
+
+# Suggested Development Phases
+
+## Phase 1 (Current MVP)
+
+Features:
+- Streamlit UI
+- Single AI Agent
+- Google APIs
+- Weather API
+- Cost estimation
+- Source transparency
+- No database
+
+---
+
+## Phase 2
+
+Add:
+- Hotel recommendations
+- Restaurant recommendations
+- Better ranking engine
+- Session history
+
+---
+
+## Phase 3
+
+Add:
+- Multi-agent architecture
+- LangGraph workflows
+- Real-time traffic analysis
+- Personalized recommendations
+
+---
+
+# Important Constraints
+
+- Keep architecture simple
+- Avoid overengineering
+- Do not use multi-agent frameworks initially
+- No authentication in MVP
+- No persistent storage required
+- Focus on user experience and AI orchestration
+
+---
+
+# Recommended Stack
+
+| Component | Technology |
+|---|---|
+| UI | Streamlit |
+| Backend | Python |
+| AI Model | Groq Llama |
+| Hosting | Streamlit Cloud |
+| Maps | Google APIs |
+| Weather | OpenWeatherMap |
+
+---
+
+# Final Goal
+
+Build a working AI-powered family weekend trip planner that:
+- Uses real-world data
+- Generates intelligent travel plans
+- Provides approximate trip costing
+- Explains why recommendations were selected
+- Displays transparent source references
+- Demonstrates practical AI orchestration using a single-agent architecture
